@@ -1,35 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import AboutMe from './pages/AboutMe';
+import Projects from './pages/Projects';
+import Navbar from './components/Navbar';
+import SplashScreen from './components/SplashScreen';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [dark, setDark] = useState(false);
+  const [splashVisible, setSplashVisible] = useState(true);
+  const [showMain, setShowMain] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(false);
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  }, [dark]);
+
+  useEffect(() => {
+    const splashTimer = setTimeout(() => setSplashVisible(false), 3600);
+    const mainTimer = setTimeout(() => setShowMain(true), 3300); // delay sedikit setelah splash hilang
+    const navbarTimer = setTimeout(() => setShowNavbar(true), 3400); // navbar muncul sedikit setelah main
+    return () => { clearTimeout(splashTimer); clearTimeout(mainTimer); clearTimeout(navbarTimer); };
+  }, []);
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Portfolio Alden V1</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <SplashScreen visible={splashVisible} />
+      {showMain && (
+        <Router>
+          <div className={`app-container${dark ? ' dark' : ''}`}>
+            <div className={`navbar-animate${showNavbar ? ' navbar-animate-in' : ''}`}>
+              <Navbar dark={dark} setDark={setDark} />
+            </div>
+            <main className="page-container">
+              <Routes>
+                <Route path="/" element={<Home animateFrom="bottom" />} />
+                <Route path="/about" element={<AboutMe />} />
+                <Route path="/projects" element={<Projects />} />
+              </Routes>
+            </main>
+          </div>
+        </Router>
+      )}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
