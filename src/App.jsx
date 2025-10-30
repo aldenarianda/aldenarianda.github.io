@@ -18,7 +18,7 @@ function App() {
   }, [dark]);
 
   useEffect(() => {
-    const splashTimer = setTimeout(() => setSplashVisible(false), 3600);
+    const splashTimer = setTimeout(() => setSplashVisible(false), 3550);
     const mainTimer = setTimeout(() => setShowMain(true), 3300); // delay sedikit setelah splash hilang
     const navbarTimer = setTimeout(() => setShowNavbar(true), 3400); // navbar muncul sedikit setelah main
     return () => { clearTimeout(splashTimer); clearTimeout(mainTimer); clearTimeout(navbarTimer); };

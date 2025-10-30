@@ -26,6 +26,7 @@
     animation:
       splashInMain 1.13s 0s cubic-bezier(.69,1.7,.17,.92) forwards,
       splashOutMain 0.9s 3.3s cubic-bezier(.44,2.12,.22,.98) forwards;
+    padding: 0 1rem;
   }
   .splash-text-sub {
     display:block;
