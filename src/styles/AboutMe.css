@@ -1,0 +1,108 @@
+.about-container {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-content {
+  animation: fadeIn 1s ease-out;
+}
+
+.about-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--text-main);
+}
+
+.about-text {
+  margin-bottom: 3rem;
+}
+
+.about-text p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  color: var(--text-main);
+}
+
+.highlight-text {
+  font-size: 1.3rem !important;
+  color: #2081c3 !important;
+  font-weight: 500;
+}
+
+.skills-section {
+  margin-top: 3rem;
+}
+
+.skills-section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--text-main);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.skill-category {
+  background: var(--navbar-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.skill-category:hover {
+  transform: translateY(-5px);
+}
+
+.skill-category h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #2081c3;
+}
+
+.skill-category p {
+  line-height: 1.6;
+  color: var(--text-main);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .about-container {
+    padding: 2rem 1rem;
+  }
+
+  .about-content h1 {
+    font-size: 2rem;
+  }
+
+  .about-text p {
+    font-size: 1rem;
+  }
+
+  .highlight-text {
+    font-size: 1.2rem !important;
+  }
+
+  .skills-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}

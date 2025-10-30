@@ -57,6 +57,10 @@ body {
   align-items: center;
   gap: 2em;
   flex-direction: row;
+  width: 100%;
+  max-width: 1200px;
+  justify-content: space-between; /* push theme switch to the right */
+  padding: 0 1rem;
 }
 
 .nav-links {
