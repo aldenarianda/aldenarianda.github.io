@@ -4,11 +4,19 @@ html[data-theme='light'] {
   --bg-body: #f7f7f7;
   --text-main: #23282d;
   --navbar-bg: #eef0f4;
+  /* splash and accents for light theme */
+  --bg: #fafdff;
+  --accent: #2081c3;
+  --fg: #202124;
 }
 html[data-theme='dark'] {
   --bg-body: #181c23;
   --text-main: #e2e6ee;
   --navbar-bg: #232943;
+  /* splash and accents for dark theme */
+  --bg: #0f1720;
+  --accent: #5cc2ff;
+  --fg: #e6eaf0;
 }
 
 body {
@@ -156,6 +164,16 @@ body {
 
 .nav-link.active {
   color: #355ad8;
+}
+
+/* If nav links are rendered as <button class="nav-link"> reset default button styles */
+button.nav-link {
+  background: transparent;
+  border: none;
+  padding: 0.3em 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
 }
 
 .page-container {
