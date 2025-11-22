@@ -39,6 +39,7 @@
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   transition: background 1.2s ease, border 1.2s ease, box-shadow 1.2s ease;
+  max-width: 100%;
 }
 
 .about-photo-frame::before {
@@ -57,7 +58,8 @@
   position: absolute;
   inset: 12px;
   border-radius: 18px;
-  border: 1px dashed rgba(255, 255, 255, 0.08);
+  /* dashed decorative border removed for cleaner presentation */
+  border: none;
   pointer-events: none;
   z-index: 1;
 }
@@ -65,11 +67,12 @@
 .about-photo-frame img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: contain; /* ensure the full image is visible and not cropped */
   display: block;
-  filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.25));
+  filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.12));
   position: relative;
   z-index: 2;
+  background: transparent;
 }
 
 .about-copy {
@@ -143,30 +146,159 @@
 
   .about-hero {
     flex-direction: column;
-    text-align: left;
-    gap: 0rem;
+    text-align: center;
+    gap: 1rem;
     align-items: center;
   }
 
   .about-photo-wrapper {
     justify-content: center;
     margin-right: 0;
+    width: 100%;
+    display: flex;
+  }
+
+  .about-copy {
+    width: 100%;
+    text-align: center;
+    padding: 0 0.5rem;
   }
 
   .about-eyebrow {
-    letter-spacing: 0.2em;
+    letter-spacing: 0.18em;
   }
 }
 
 @media screen and (max-width: 480px) {
   .about-photo-frame {
-    width: 80vw;
-    max-width: 280px;
-    height: 320px;
+    width: min(80vw, 280px);
+    height: calc(min(80vw, 280px) * 1.15);
     margin: 0 auto;
   }
 
   .about-copy h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
+
+  .about-description {
+    font-size: 0.98rem;
+    line-height: 1.6;
+    text-align: left;
+    max-width: 92%;
+    margin: 0 auto;
+  }
+}
+
+/* Skills section */
+.about-skills {
+  width: 100%;
+  margin-top: 3.5rem;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+.about-skills h1 {
+  font-size: 2.75rem; 
+  margin: 0 0 2.5rem 0; 
+  color: var(--text-main);
+  font-weight: 700; 
+  text-transform: uppercase;  
+}
+
+.about-skills h2 {
+  font-size: 1.6rem;
+  margin: 0 0 0.5rem 0;
+  color: var(--text-main);
+}
+
+.skills-intro {
+  color: var(--text-main);
+  opacity: 0.85;
+  margin-bottom: 1rem;
+}
+
+.skills-grid {
+  display: flex; /* Ubah dari Grid ke Flex */
+  flex-wrap: wrap; /* Agar bisa turun ke baris baru */
+  justify-content: center; /* KUNCI: Agar baris kedua (sisa) berada di tengah */
+  gap: 1.5rem; /* Jarak antar kartu */
+}
+
+.skill-card {
+  flex: 0 0 calc((100% - 3rem) / 3);
+  box-sizing: border-box;
+  background: var(--about-photo-bg);
+  border: 3px solid var(--about-photo-border);
+  padding: 1.1rem;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.skill-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(125deg, var(--about-photo-glare), transparent 60%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.skill-icon {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  color: var(--accent);
+  border: 1px solid rgba(32,129,195,0.12);
+  margin-bottom: 4px;
+}
+
+.skill-card h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text-main);
+}
+
+.skill-list {
+  margin: 0;
+  color: var(--text-main);
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+@media screen and (max-width: 992px) { 
+  .skill-card {
+    /* Rumus untuk 2 kolom: (100% - 1.5rem gap) dibagi 2 */
+    flex: 0 0 calc((100% - 1.5rem) / 2); 
+  }
+}
+
+/* HP: ubah jadi 1 kolom */
+@media screen and (max-width: 480px) {
+  .skill-card {
+    flex: 0 0 100%; /* Lebar penuh */
+  }
+  
+  .skills-grid {
+     gap: 1rem;
+  }
+}
+
+.skill-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.18);
 }
