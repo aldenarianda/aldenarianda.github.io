@@ -25,7 +25,7 @@ const Home = ({ animateFrom }) => {
       <div className="home-content">
         <div className="content-left">
           <h1>Hi, I'm <span className="highlight">Muhammad Alden Arianda</span></h1>
-          <h2>Data Analyst & Data Scientist</h2>
+          <h2>Passionate in Data & Business Analytics</h2>
           <p className="intro-text">
             A passionate data enthusiast specializing in transforming complex data into actionable insights. 
             Currently a Computer Science student at Binus University with expertise in Python, SQL, and Tableau.

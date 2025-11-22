@@ -94,7 +94,7 @@ function App() {
           </div>
           <main className="page-container">
             {page === 'home' && <Home animateFrom="bottom" />}
-            {page === 'about' && <AboutMe />}
+            {page === 'about' && <AboutMe animateFrom="bottom" />}
             {page === 'projects' && <Projects />}
           </main>
         </div>

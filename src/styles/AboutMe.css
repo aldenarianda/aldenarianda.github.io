@@ -1,108 +1,172 @@
-.about-container {
-  padding: 4rem 2rem;
+.about-page {
+  width: 100%;
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  padding: 3rem 2rem;
+  box-sizing: border-box;
+  transition: background 1.2s ease;
+}
+
+.about-hero {
+  width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
-}
-
-.about-content {
-  animation: fadeIn 1s ease-out;
-}
-
-.about-content h1 {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-  color: var(--text-main);
-}
-
-.about-text {
-  margin-bottom: 3rem;
-}
-
-.about-text p {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  margin-bottom: 1.5rem;
-  color: var(--text-main);
-}
-
-.highlight-text {
-  font-size: 1.3rem !important;
-  color: #2081c3 !important;
-  font-weight: 500;
-}
-
-.skills-section {
-  margin-top: 3rem;
-}
-
-.skills-section h2 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  color: var(--text-main);
-}
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
   gap: 2rem;
 }
 
-.skill-category {
-  background: var(--navbar-bg);
+.about-photo-wrapper {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  margin-right: 1.5rem;
+}
+
+.about-photo-frame {
+  width: 280px;
+  height: 360px;
+  border-radius: 24px;
   padding: 1.5rem;
-  border-radius: 8px;
-  transition: transform 0.3s ease;
+  background: var(--about-photo-bg);
+  border: 3px solid var(--about-photo-border);  
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  transition: background 1.2s ease, border 1.2s ease, box-shadow 1.2s ease;
 }
 
-.skill-category:hover {
-  transform: translateY(-5px);
+.about-photo-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(125deg, var(--about-photo-glare), transparent 60%);
+  opacity: 0.7;
+  pointer-events: none;
+  transition: opacity 1.2s ease;
 }
 
-.skill-category h3 {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
+.about-photo-frame::after {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border-radius: 18px;
+  border: 1px dashed rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.about-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.25));
+  position: relative;
+  z-index: 2;
+}
+
+.about-copy {
+  flex: 1.2;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.about-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 0.85rem;
   color: #2081c3;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
 }
 
-.skill-category p {
-  line-height: 1.6;
+.about-copy h1 {
+  font-size: 2.75rem;
+  margin: 0 0 1.5rem;
   color: var(--text-main);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: color 0.5s ease;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.about-description {
+  line-height: 1.8;
+  font-size: 1.1rem;
+  color: var(--text-main);
+  transition: color 0.5s ease;
+  text-align: justify;
 }
 
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-  .about-container {
-    padding: 2rem 1rem;
+.about-dropup,
+.about-dropdown {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(.57,1.49,.45,1.12), transform 0.9s cubic-bezier(.52,1.32,.43,1.07);
+}
+
+.about-dropdown {
+  transform: translateY(-40px);
+}
+
+.about-animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media screen and (max-width: 1024px) {
+  .about-hero {
+    gap: 3rem;
   }
 
-  .about-content h1 {
-    font-size: 2rem;
+  .about-copy h1 {
+    font-size: 2.3rem;
   }
 
-  .about-text p {
+  .about-description {
     font-size: 1rem;
   }
+}
 
-  .highlight-text {
-    font-size: 1.2rem !important;
+@media screen and (max-width: 768px) {
+  .about-page {
+    padding: 2rem 1rem 3rem;
   }
 
-  .skills-section h2 {
-    font-size: 1.8rem;
+  .about-hero {
+    flex-direction: column;
+    text-align: left;
+    gap: 0rem;
+    align-items: center;
   }
 
-  .skills-grid {
-    grid-template-columns: 1fr;
+  .about-photo-wrapper {
+    justify-content: center;
+    margin-right: 0;
+  }
+
+  .about-eyebrow {
+    letter-spacing: 0.2em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .about-photo-frame {
+    width: 80vw;
+    max-width: 280px;
+    height: 320px;
+    margin: 0 auto;
+  }
+
+  .about-copy h1 {
+    font-size: 2rem;
   }
 }

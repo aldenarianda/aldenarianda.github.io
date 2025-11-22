@@ -8,6 +8,9 @@ html[data-theme='light'] {
   --bg: #fafdff;
   --accent: #2081c3;
   --fg: #202124;
+  --about-photo-bg: linear-gradient(135deg, #f6fbff 0%, #e3f0ff 100%);
+  --about-photo-border: rgba(32, 129, 195, 0.25);
+  --about-photo-glare: rgba(255, 255, 255, 0.7);
 }
 html[data-theme='dark'] {
   --bg-body: #181c23;
@@ -17,6 +20,9 @@ html[data-theme='dark'] {
   --bg: #0f1720;
   --accent: #5cc2ff;
   --fg: #e6eaf0;
+  --about-photo-bg: linear-gradient(135deg, #142033 0%, #233655 100%);
+  --about-photo-border: rgba(92, 194, 255, 0.32);
+  --about-photo-glare: rgba(255, 255, 255, 0.18);
 }
 
 body {
