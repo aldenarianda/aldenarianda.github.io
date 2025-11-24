@@ -13,8 +13,8 @@ function App() {
       const saved = localStorage.getItem('theme');
       if (saved === 'dark') return true;
       if (saved === 'light') return false;
-    } catch (e) {
-      // ignore localStorage errors
+    } catch {
+      void 0;
     }
     if (typeof window !== 'undefined' && window.matchMedia) {
       return window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -25,7 +25,8 @@ function App() {
   const [userSelectedTheme, setUserSelectedTheme] = useState(() => {
     try {
       return !!localStorage.getItem('theme');
-    } catch (e) {
+    } catch {
+      void 0;
       return false;
     }
   });
@@ -45,8 +46,8 @@ function App() {
       const next = typeof updater === 'function' ? updater(prev) : updater;
       try {
         localStorage.setItem('theme', next ? 'dark' : 'light');
-      } catch (e) {
-        // ignore
+      } catch {
+        void 0;
       }
       setUserSelectedTheme(true);
       return next;
@@ -79,8 +80,8 @@ function App() {
   useEffect(() => {
     try {
       sessionStorage.setItem('page', page);
-    } catch (e) {
-      // ignore sessionStorage errors
+    } catch {
+      void 0;
     }
   }, [page]);
 

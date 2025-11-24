@@ -188,6 +188,12 @@ button.nav-link {
   color: inherit;
 }
 
+/* Remove default focus outline for navbar buttons and rely on custom focus styles above */
+button.nav-link:focus,
+button.nav-link:focus-visible {
+  outline: none;
+}
+
 .page-container {
   /* kept above - duplicate removed */
 }
